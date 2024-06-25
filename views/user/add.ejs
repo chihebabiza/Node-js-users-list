@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<%- include('../inc/head') %>
+
+  <body>
+    <%- include('../inc/svg') %>
+      <%- include('../inc/mode') %>
+        <main class="d-flex flex-nowrap">
+          <%- include('../inc/sidebar') %>
+            <div class="b-example-divider b-example-vr"></div>
+            <section class="w-100">
+              <%- include('../inc/nav') %>
+                <form class="mx-0 row gx-3 gy-4 mt-3" action="/user/add.html" method="post">
+                  <div class="col-md-6">
+                    <label for="inputfirstName4" class="form-label">First Name:</label>
+                    <input placeholder="Ali..." required name="firstName" type="text" class="form-control"
+                      id="inputfirstName4" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputlastName4" class="form-label">Last Name:</label>
+                    <input placeholder="Hassan..." required name="lastName" type="text" class="form-control"
+                      id="inputlastName4" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputemail4" class="form-label">Email:</label>
+                    <input placeholder="ali@gmail.com" required name="email" type="email" class="form-control"
+                      id="inputemail4" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputtele4" class="form-label">Telephone:</label>
+                    <input placeholder="011987899" required name="phone" type="number" class="form-control"
+                      id="inputtele4" />
+                  </div>
+
+                  <div>
+                    <div class="col-md-6">
+                      <label for="inputage4" class="form-label">Age:</label>
+                      <input placeholder="Your Age: ..." required name="age" type="number" class="form-control"
+                        id="inputage4" />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="col-md-6">
+                      <label for="inputCountry" class="form-label">Country:</label>
+                      <select id="inputCountry" name="country" class="form-select" required>
+                        <% country_list.forEach(country=> { %>
+                          <option selected value="<%= country %>">
+                            <%= country %>
+                          </option>
+                          <% }) %>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="col-md-6">
+                      <label for="inputGender" class="form-label">Gender:</label>
+                      <select required id="inputGender" name="gender" class="form-select">
+                        <option selected hidden disabled>Choose here ...</option>
+                        <option selected>Male</option>
+                        <option>Female</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+            </section>
+        </main>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+
+        <script src="../js/sidebars.js"></script>
+        <script src="../js/main.js"></script>
+        <script>
+          // Select the element with class 'nav-link'
+          const navLink = document.querySelector('.add');
+
+          // Add the 'active' class to the selected element
+          navLink.classList.add('active');
+
+        </script>
+  </body>
+
+</html>

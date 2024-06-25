@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+<%- include('../inc/head') %>
+
+  <body>
+    <%- include('../inc/svg') %>
+      <%- include('../inc/mode') %>
+        <main class="d-flex flex-nowrap">
+          <%- include('../inc/sidebar') %>
+            <div class="b-example-divider b-example-vr"></div>
+            <section class="w-100">
+              <%- include('../inc/nav') %>
+                <%- include('../inc/navbar') %>
+                  <form action="/edit/<%= user._id %>?_method=PUT" method="post" class="mx-0 row gx-3 gy-4 mt-2">
+                    <div class="col-md-6">
+                      <label for="inputfirstName4" class="form-label">First Name:</label>
+                      <input placeholder="Ali..." required type="text" name="firstName" value="<%= user.firstName %>"
+                        class="form-control" id="inputfirstName4" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputlastName4" class="form-label">Last Name:</label>
+                      <input placeholder="Hassan..." name="lastName" required value="<%= user.lastName %>" type="text"
+                        class="form-control" id="inputlastName4" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputemail4" class="form-label">Email:</label>
+                      <input placeholder="ali@gmail.com" name="email" required value="<%= user.email %>" type="email"
+                        class="form-control" id="inputemail4" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputtele4" class="form-label">Telephone:</label>
+                      <input placeholder="011987899" required name="phone" value="<%= user.phone %>" type="number"
+                        class="form-control" id="inputtele4" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputage4" class="form-label">Age:</label>
+                      <input placeholder="Your Age: ..." name="age" required value="<%= user.age %>" type="number"
+                        class="form-control" id="inputage4" />
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputCountry" class="form-label">Country:</label>
+                      <select required id="inputCountry" name="country" class="form-select">
+                        <option selected hidden disabled>
+                          <%= user.country %>
+                        </option>
+                        <% country_list.forEach(country=> { %>
+                          <option value="<%= country %>">
+                            <%= country %>
+                          </option>
+                          <% }) %>
+                      </select>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputGender" class="form-label">Gender:</label>
+                      <select required id="inputGender" name="gender" class="form-select">
+                        <option selected hidden disabled>
+                          <%= user.gender %>
+                        </option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                    </div>
+                    <div class="col-12 mt-3">
+                      <button type="submit" class="btn btn-primary">Update changes</button>
+                      <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button"
+                        class="btn btn-danger">Delete Customer</button>
+                    </div>
+                  </form>
+            </section>
+
+            <!-- Delete Confirmation Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Customer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">Are you sure you want to continue delete the customer?</div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <form action="/edit/<%= user._id %>?_method=DELETE" method="post">
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </main>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script src="../js/sidebars.js"></script>
+        <script src="../js/main.js"></script>
+  </body>
+
+</html>
