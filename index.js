@@ -37,7 +37,7 @@ app.delete('/edit/:id', costumerController.deleteCustomer);
 app.put("/edit/:id", costumerController.updateCustomer);
 
 // Connect to database
-mongoose.connect('mongodb+srv://3vWL3pk17lvhh79K:3vWL3pk17lvhh79K@cluster0.yu2bxuj.mongodb.net/all-data?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect('mongodb://localhost:27017/users-list')
   .then(() => {
     app.listen(port, () => {
       console.log(`Example app listening on port ${port}`)
